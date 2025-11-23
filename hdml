@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PromptCraft Lab — AI-инструменты для продаж</title>
+  <meta name="description" content="PromptCraft Lab — готовые промпты, шаблоны и мини-курсы для менеджеров по продажам. Создавай продукты и продавай 24/7." />
+
+  <!-- Simple modern CSS (one-file) -->
+  <style>
+    :root{
+      --bg:#0f1724; --card:#0b1220; --muted:#9aa4b2; --accent:#7c5cff; --glass: rgba(255,255,255,0.03);
+      --maxw:1100px; --radius:14px;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:linear-gradient(180deg,#071023 0%, #071833 100%);color:#e6eef6;line-height:1.45}
+    .wrap{max-width:var(--maxw);margin:0 auto;padding:28px}
+    header{display:flex;align-items:center;justify-content:space-between;padding:10px 0}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{
+      width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#3b82f6);
+      display:flex;align-items:center;justify-content:center;font-weight:700;color:white;font-size:18px;box-shadow:0 6px 18px rgba(124,92,255,0.15)
+    }
+    nav a{color:var(--muted);text-decoration:none;margin-left:18px;font-weight:600}
+    .hero{display:grid;grid-template-columns:1fr 380px;gap:28px;align-items:center;margin-top:22px}
+    .hero h1{font-size:34px;margin:0 0 12px}
+    .hero p{color:var(--muted);margin:0 0 20px}
+    .cta-row{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{
+      background:linear-gradient(90deg,var(--accent),#4f46e5);
+      color:white;padding:12px 18px;border-radius:10px;border:0;font-weight:700;cursor:pointer;box-shadow:0 8px 30px rgba(79,70,229,0.12)
+    }
+    .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
+    .card{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,0.45)}
+    .product-list{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:16px}
+    .product{padding:14px;border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent)}
+    .product h3{margin:0 0 8px;font-size:16px}
+    .muted{color:var(--muted);font-size:14px}
+    .lead-form{display:flex;gap:8px;margin-top:12px}
+    input[type="email"]{flex:1;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
+    footer{margin-top:40px;padding:26px 0;color:var(--muted);font-size:14px;text-align:center}
+
+    /* responsive */
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr;gap:18px}
+      .product-list{grid-template-columns:1fr}
+      nav{display:none}
+    }
+
+    /* subtle badges */
+    .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:var(--glass);color:var(--muted);font-weight:700;font-size:13px}
+    .blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
+    @media (max-width:1100px){.blog-grid{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:700px){.blog-grid{grid-template-columns:1fr}}
+    .post{padding:12px;border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent)}
+    .small{font-size:13px;color:var(--muted)}
+    .subtle{opacity:.85}
+    .center{display:flex;align-items:center;justify-content:center}
+    .footer-links a{color:var(--muted);margin:0 8px;text-decoration:none}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">PC</div>
+        <div>
+          <div style="font-weight:800">PromptCraft Lab</div>
+          <div class="small" style="margin-top:3px">AI-инструменты и шаблоны для продаж</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#products">Продукты</a>
+        <a href="#blog">Блог</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <div class="badge">Бесплатный чек-лист</div>
+          <h1>Продажи + ИИ: готовые промпты, шаблоны и автоворонки</h1>
+          <p>Готовые наборы для менеджеров по продажам: чек-листы, скрипты и 50 промптов для ChatGPT. Создавайте продукты и продавайте 24/7 — без вложений.</p>
+
+          <div class="cta-row">
+            <button class="btn" onclick="window.location='#free'">Получить чек-лист</button>
+            <button class="btn ghost" onclick="scrollToSection('products')">Посмотреть продукты</button>
+          </div>
+
+          <div style="margin-top:18px" class="card">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <div>
+                <strong>Начни бесплатно</strong>
+                <div class="muted small">Получите 10 промптов и чек-лист сразу</div>
+              </div>
+              <div>
+                <form id="leadForm" class="lead-form" onsubmit="subscribe(event)">
+                  <input id="email" type="email" placeholder="Ваша почта" required />
+                  <button class="btn" type="submit">Получить</button>
+                </form>
+              </div>
+            </div>
+            <div class="small muted" style="margin-top:10px">Мы отправим чек-лист и 10 промптов в ответном письме. Ты можешь отписаться в любой момент.</div>
+          </div>
+
+        </div>
+
+        <aside class="card" style="min-height:230px;">
+          <h3 style="margin-top:0">Премиум-наборы</h3>
+          <div class="product-list">
+            <div class="product">
+              <h3>Продажи 2.0 — 35 инструментов</h3>
+              <div class="muted">Шаблоны, скрипты и готовые процессы для менеджера</div>
+              <div style="margin-top:10px">
+                <button class="btn" onclick="buy('https://gumroad.com/PLACEHOLDER_PRODUCT1')">Купить — 490₽</button>
+              </div>
+            </div>
+            <div class="product">
+              <h3>Prompt-Pack — 50 команд</h3>
+              <div class="muted">Готовые промпты, которые экономят часы работы</div>
+              <div style="margin-top:10px">
+                <button class="btn" onclick="buy('https://gumroad.com/PLACEHOLDER_PRODUCT2')">Купить — 290₽</button>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top:12px" class="small muted">Платформа доставки: <strong>Gumroad / Payhip</strong>. После оплаты покупатель получает электронный файл автоматически.</div>
+        </aside>
+      </section>
+
+      <section id="free" style="margin-top:26px">
+        <div class="card">
+          <h2 style="margin-top:0">Бесплатно: Чек-лист идеального звонка</h2>
+          <p class="muted">20 пунктов — распечатай, держи перед звонком и фиксируй результат в CRM.</p>
+
+          <div style="display:flex;gap:12px;flex-wrap:wrap">
+            <a class="btn" href="https://example.com/checklist.pdf" id="downloadLink">Скачать PDF</a>
+            <button class="btn ghost" onclick="window.location='#blog'">Читать блог</button>
+          </div>
+
+          <div style="margin-top:12px" class="small muted">
+            Если хочешь, я могу автоматически заменить ссылку на твой Google Drive / Gumroad после загрузки файла.
+          </div>
+        </div>
+      </section>
+
+      <section id="products" style="margin-top:22px">
+        <h2>Продукты</h2>
+        <div class="blog-grid">
+          <div class="post card">
+            <h3>Prompt-Pack: 50 промптов</h3>
+            <div class="small muted">Готовые команды для ChatGPT: скрипты, КП, обработка возражений.</div>
+            <div style="margin-top:10px"><button class="btn" onclick="buy('https://gumroad.com/PLACEHOLDER_PRODUCT2')">Купить</button></div>
+          </div>
+          <div class="post card">
+            <h3>Продажи 2.0 — 35 инструментов</h3>
+            <div class="small muted">Полный PDF-пакет: шаблоны, чек-листы, мини-CRM.</div>
+            <div style="margin-top:10px"><button class="btn" onclick="buy('https://gumroad.com/PLACEHOLDER_PRODUCT1')">Купить</button></div>
+          </div>
+          <div class="post card">
+            <h3>Комбо: Prompt + CRM шаблон</h3>
+            <div class="small muted">Скидка при покупке двух пакетов.</div>
+            <div style="margin-top:10px"><button class="btn" onclick="buy('https://gumroad.com/PLACEHOLDER_COMBO')">Купить</button></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="blog" style="margin-top:28px">
+        <h2>Блог — автоматические статьи</h2>
+        <div class="blog-grid">
+          <article class="post card">
+            <h3>7 ошибок менеджеров, которые убивают продажи</h3>
+            <div class="small muted">Короткая стратегия, как исправить — 5 минут на чтение</div>
+            <a class="small" href="/blog/7-errors.html">Читать →</a>
+          </article>
+          <article class="post card">
+            <h3>Как использовать ИИ, чтобы закрывать клиентов быстрее</h3>
+            <div class="small muted">Простые промпты и сценарии</div>
+            <a class="small" href="/blog/ai-fast-close.html">Читать →</a>
+          </article>
+          <article class="post card">
+            <h3>Идеальный первый звонок: сценарий на 60 секунд</h3>
+            <div class="small muted">Практичный скрипт и чек-лист</div>
+            <a class="small" href="/blog/60sec-call.html">Читать →</a>
+          </article>
+        </div>
+      </section>
+
+      <section id="faq" style="margin-top:28px">
+        <div class="card">
+          <h2 style="margin-top:0">FAQ</h2>
+          <div>
+            <strong>Как доставлять продукт после оплаты?</strong>
+            <div class="muted small">Используй Gumroad/Payhip — они отправляют файлы автоматически. Можно подключить PayPal/Stripe.</div>
+          </div>
+          <div style="margin-top:10px">
+            <strong>Как настроить автопостинг статей?</strong>
+            <div class="muted small">Сохраняй статьи в репозитории /blog и используй GitHub Actions (пример ниже) или Make.com для публикации в Telegram.</div>
+          </div>
+          <div style="margin-top:10px">
+            <strong>Как подключить рассылку?</strong>
+            <div class="muted small">Mailchimp / Substack / ConvertKit — вставь форму в HTML и обработай webhook в Zapier/Make.</div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <div class="small">© <strong>PromptCraft Lab</strong> — готовые AI-инструменты для продаж · <span class="subtle">All rights reserved</span></div>
+      <div style="margin-top:8px" class="footer-links">
+        <a href="#privacy">Политика конфиденциальности</a> · <a href="#terms">Условия</a>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Minimal JS: form handling, buy stub -->
+  <script>
+    function scrollToSection(id){
+      const el = document.getElementById(id);
+      if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+    }
+
+    function buy(url){
+      // Replace with direct Gumroad/Payhip link. For testing opens placeholder.
+      if(!url) return alert('Ссылка не задана');
+      window.open(url, '_blank');
+    }
+
+    function subscribe(e){
+      e.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      if(!email) return alert('Введите email');
+      // 1) Quick: redirect to Mailchimp embed / Google Form
+      // 2) Or send to webhook (Zapier/Make) that adds to Mailchimp and sends file
+      // For now — simulate:
+      alert('Спасибо! На почту придёт чек-лист (симуляция). Замените это поведение на реальный webhook в инструкциях.');
+      document.getElementById('email').value = '';
+      // OPTIONAL: track event in analytics
+    }
+  </script>
+</body>
+</html>
